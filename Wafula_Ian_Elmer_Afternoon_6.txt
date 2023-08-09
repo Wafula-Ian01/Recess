@@ -1,0 +1,75 @@
+import os
+
+def createFile(fileName):#creating a file
+    try:
+        with open(fileName, 'w') as file:
+            file.write("C++ is better than Python when it comes to embedded systems.\n")
+            
+        print("File "+ fileName+" read successfully")
+        
+    except IOError:
+        print("Could not create file")
+        
+        
+def splitRead(fileName): #reads as splits all string in a line into an array
+    with open(fileName, 'r') as file:
+        try:
+            content= file.readlines()
+            for line in content:
+                word= line.split()
+                print(word)
+                print("File "+ fileName+" read successfully")
+                
+        except IOError:
+            print("Error: Could not read from the file.")
+            
+def writeMode(filename):#w erases the content in a file if file exists and overwrites the content there in 
+   try:
+        file= open(filename, 'w')
+        content=input("Please Enter what you want to write to the file")
+        file.write(content)
+        file.close()
+    
+   except IOError:
+       print("Error: Could not write to the file.")
+    
+def appendMode(filename):#w erases the content in a file if file exists and overwrites the content there in 
+    file= open(filename, 'a')
+    content=input("Please Enter what you want to write to the file")
+    file.write(content)
+    file.close()
+    
+def fileRename(fileName, newFileName):
+    try:
+        os.rename(fileName, newFileName)
+        print("File "+fileName+"renamed to "+ newFileName)
+        
+    except:
+        print("Error: This file "+fileName +", could not be renamed.")
+        
+def fileRemove(fileName):
+    try:
+        os.remove(fileName)
+        print(fileName+ " file successfully removed.")
+        
+    except IOError:
+        print("Error: Could not delete file.")
+
+def fun(num1, num2):
+    ans=num2/num1
+    return print(ans)
+
+try:
+    fun(6,5)
+    createFile(MukPro)
+    readFile("Wafula.txt")
+    splitRead("Wafula.txt")
+    appendMode("Wafula.txt")
+    fileRemove("MukPro")
+    
+    
+except ZeroDivisionError:
+    print("Error: ", ZeroDivisionError)
+    
+except : print("File does not exist.")
+    
